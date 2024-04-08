@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Website</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .frame {
+            box-sizing: border-box;
+            padding: 20px;
+            width: 100%;
+            height: 20vh;
+            display: flex;
+            flex-direction: row;
+            background-color: #232f3e;
+            color: #fff;
+        }
+
+        .columns, .columns1 {
+            box-sizing: border-box;
+            padding: 20px;
+            width: 20%;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #3d4c63;
+            color: #fff;
+            border: 1px solid #2d3c4f;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .columns:hover {
+            background-color: #2d3c4f;
+            transform: scale(1.05);
+        }
+
+        .columns a, .columns1 a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .frame:nth-child(3) {
+            height: 50vh;
+            background-color: #e77600;
+        }
+
+        .columns1 {
+            width: 50%;
+            height: 50vh;
+        }
+
+        .columns1 a {
+            margin-bottom: 10px;
+        }
+
+        .columns1 a:hover {
+            color: #f4f4f4;
+        }
+
+        .descriptionColumn {
+            box-sizing: border-box;
+            padding: 20px;
+            width: 50%;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+        }
+
+        /* Logo Hover Animation */
+        .logo img {
+            animation: logoHover 1s ease infinite alternate;
+        }
+
+        @keyframes logoHover {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- First Row -->
+    <div class="frame">
+        <div class="logo">
+            <img src="logo.webp" alt="Logo" width="100" height="75">
+        </div>
+        <div class="header">
+            <h2>AMAZON</h2>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="frame">
+        <div class="columns">
+            <h2>Home</h2>
+            <p>Welcome to the Home Page. This is the main landing page of our website.</p>
+        </div>
+        <div class="columns">
+            <h2>Login</h2>
+            <p>If you have an account, please log in here. Access exclusive features and personalized content.</p>
+        </div>
+        <div class="columns">
+            <h2>Registration</h2>
+            <p>Create a new account to explore more features. Join our community today!</p>
+        </div>
+        <div class="columns">
+            <h2>Catalogue</h2>
+            <p>Explore our latest products in the catalogue. Discover a wide range of high-quality items.</p>
+        </div>
+        <div class="columns">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us. We'd love to hear from you! Contact our support team for assistance.</p>
+        </div>
+    </div>
+
+    <!-- Third Row -->
+    <div class="frame">
+        <div class="columns1">
+            <a href="#" onclick="loadContent('home')">Home</a>
+            <a href="#" onclick="loadContent('login')">Login</a>
+            <a href="#" onclick="loadContent('registration')">Registration</a>
+            <a href="#" onclick="loadContent('catalogue')">Catalogue</a>
+            <a href="#" onclick="loadContent('contact')">Contact Us</a>
+        </div>
+        <div class="descriptionColumn" id="descriptionColumn">
+            <h2>Service Description</h2>
+            <p>Select a service from the left to view more details.</p>
+        </div>
+    </div>
+
+    <script>
+        function loadContent(page) {
+            const descriptionColumn = document.getElementById('descriptionColumn');
+            switch (page) {
+                case 'home':
+                    descriptionColumn.innerHTML = `<h2>Home</h2><p>This is the main landing page of our website. Welcome!</p>`;
+                    break;
+                case 'login':
+                    descriptionColumn.innerHTML = `<h2>Login</h2><p>If you have an account, please log in here. Access exclusive features and personalized content.</p>`;
+                    break;
+                case 'registration':
+                    descriptionColumn.innerHTML = `<h2>Registration</h2><p>Create a new account to explore more features. Join our community today!</p>`;
+                    break;
+                case 'catalogue':
+                    descriptionColumn.innerHTML = `<h2>Catalogue</h2><p>Explore our latest products in the catalogue. Discover a wide range of high-quality items.</p>`;
+                    break;
+                case 'contact':
+                    descriptionColumn.innerHTML = `<h2>Contact Us</h2><p>Feel free to reach out to us. We'd love to hear from you! Contact our support team for assistance.</p>`;
+                    break;
+                default:
+                    descriptionColumn.innerHTML = `<h2>${page.charAt(0).toUpperCase() + page.slice(1)}</h2><p>This is the content of the ${page} page.</p>`;
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
